@@ -1,10 +1,36 @@
 <?php
     require "header.php";
 ?>
-    <main>
-        <center>
-            <h1>welcome home</h1>
-        </center>
-    </main>
+
+<!-- LOGIN FORM -->
+
+<center>
+<form>
+    <div class="heading">
+      <h3>Login to your account</h3>
+    </div>
+
+      <div class="form-group">
+        <label for="username" class="label">Username</label>
+          <input type="text" name="username" id="username" class="form-control" value=""
+          placeholder="Username" autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="label">Password</label>
+          <input type="password" name="password" id="password" value="" class="form-control" placeholder="Password" autocomplete="current-password">
+      </div>
+
+      <div class="custom-checkbox">
+        <a class="fgtpassword" href="#">Forgot Password?</a>
+      </div>
+
+  <button type="submit" class="btn-login" id="loginbtn"> <a href="admin.php">Log in </a></button>
+  </form>
+</center>
+
+<!-- END OF LOGIN FORM -->
+<!------------------------------------------------------------------------------------------------------------------->
+
 </body>
 </html>

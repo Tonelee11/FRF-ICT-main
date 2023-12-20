@@ -7,24 +7,7 @@
     <title>FRF-ICT</title>
 </head>
 <body>
-    <div>
-        <nav>
-            <h1 class="home">
-            company name here
-            </h1>
-            <ul class="nav">
-                <li>
-                    <a href="index.php">home</a>
-                </li>
-                <li>
-                    <a href="#">contacts</a>
-                </li>
-                <li>
-                    <a href="#">help</a>
-                </li>
-                <button>
-                    <a href="login.php" >login</a> 
-                </button>
-            </ul>
+    
+        <nav>       
+            <h1 style="text-align:center">FIRE AND RESCUE FORCE ICT INVENTORY MANAGEMENT SYSTEM</h1>
         </nav>
-    </div>
