@@ -58,30 +58,33 @@
 <div class="right-column">
 
     <!-- Register User Form -->
+   
     <div class="register-form" id="registerForm">
       <div> <h3>Register new user</h3></div>
-      <div class="form-field">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+      <form action="" method="post">
+        <div class="form-field">
+          <label for="chief officer ">chef officer username:</label>
+          <input type="text" id="fullName" name="Cuname" placeholder="Full Name" required>
+        </div>
+        <div class="form-field">
+          <label for="department">Department:</label>
+          <input type="text" id="department" name="department" placeholder="Department" required>
+        </div>
+        <div class="form-field">
+          <label for="gender">Gender:</label>
+          <input type="text" id="gender" name="gender" placeholder="Gender" required>
+        </div>
+        <div class="form-field">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+        </div>
+        <button type="submit" onclick="submitRegisterForm()">Submit</button>
       </div>
-      <div class="form-field">
-        <label for="department">Department:</label>
-        <input type="text" id="department" name="department" placeholder="Department" required>
-      </div>
-      <div class="form-field">
-        <label for="gender">Gender:</label>
-        <input type="text" id="gender" name="gender" placeholder="Gender" required>
-      </div>
-      <div class="form-field">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
-      </div>
-      <div class="form-field">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-      </div>
-      <button onclick="submitRegisterForm()">Submit</button>
-    </div>
+    </form>
 
 
 
