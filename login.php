@@ -1,26 +1,39 @@
 <?php
-    require "header.php";
+    require "connection.php";
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-    error_reporting(1);
-    
 
-?>
+    session_start();
 
-       <?php
-            require "function.php";
-           
+if (isset($_POST['loginbtn'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-            if(isset($_POST['loginbtn'])){
-                $username=$_POST['username'];
-                $password=$_POST['password'];
-                conn( login($username,$password));
-                // login($username,$password);
+    if ($username !== "" && $password !== "") {
+        $sql = "SELECT * FROM Admin WHERE Auname=? AND Apswd=?";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $rowCount = mysqli_num_rows($result);
+
+            if ($rowCount == 1) {
+                $_SESSION['admin_user'] = $username;
+                header("location:admin.php");
+            } else {
+                $message = urlencode('<script>alert("username or password is incorrect")</script>');
+                header("location:index.php?msg={$message}");
             }
-            var_dump(login());
-
-        ?>
-        <!--
-        </form>
-    </center>
-        -->
-</body>
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    } else {
+        $message = urlencode('<script>alert("please fill both fields")</script>');
+        header("location:index.php?msg={$message}");
+    }
+}
+?>
