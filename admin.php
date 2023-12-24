@@ -6,7 +6,7 @@
   if(isset($_POST['upload'])){
     $filename=$_FILES['upload']['name'];
     $tempname=$_FILES['upload']['name'];
-    $folder="/images".$filename;
+    $folder="/images/".$filename;
     
     $adminUsername = $_SESSION['admin_user'];
     // $filename = 'new_image.jpg';
@@ -35,9 +35,10 @@
   <form action="" method="post">
   <div class="profile" onclick="document.getElementById('fileInput').click()">
   
-      <img id="profileImage" src="/image/<?php echo $filename; ?>"> 
-  </div> 
-    <h1>hi <?php  // echo $_SESSION['admin_user'];?></h1>
+      <img id="profileImage" src="/image/<?php echo $filename; ?>" alt="Profile Picture">
+
+    </div>
+    <h1>hi <?php   echo $_SESSION['admin_user'];?></h1>
     <!-- Hidden file input for profile picture upload -->
     <input type="file" id="fileInput" nam="upload" class="upload-input" onchange="updateProfilePicture(event)" style="display: none"> 
     
@@ -45,8 +46,9 @@
    
 
     <div class="buttons">
+      <form action="" method="post"></form>
       <a href="#" class="dashboard-btn" onclick="showRegisterForm()">Register User</a>
-      <a href="#" class="dashboard-btn" onclick="showAllUsers()()">View All Users</a>
+      <a href="#" class="dashboard-btn">View All Users</a>
       <a href="logout.php" class="dashboard-btn">Logout</a>
       
     </div>
@@ -61,28 +63,22 @@
    
     <div class="register-form" id="registerForm">
       <div> <h3>Register new user</h3></div>
-      <form action="" method="post">
+      <form action="register.php" method="post">
         <div class="form-field">
           <label for="chief officer ">chef officer username:</label>
           <input type="text" id="fullName" name="Cuname" placeholder="Full Name" required>
         </div>
+      
         <div class="form-field">
-          <label for="department">Department:</label>
-          <input type="text" id="department" name="department" placeholder="Department" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password1" name="Cpswd" placeholder="password" required>
         </div>
+        <span id="message"></span>
         <div class="form-field">
-          <label for="gender">Gender:</label>
-          <input type="text" id="gender" name="gender" placeholder="Gender" required>
+          <label for="Ccheckno">Ccheckno:</label>
+          <input type="text" id="Ccheckno" name="Ccheckno" placeholder="checkno" required>
         </div>
-        <div class="form-field">
-          <label for="phoneNumber">Phone Number:</label>
-          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
-        </div>
-        <div class="form-field">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-        </div>
-        <button type="submit" onclick="submitRegisterForm()">Submit</button>
+        <button type="submit" id="submit" onclick="submitRegisterForm()" name="register">register</button>
       </div>
     </form>
 
@@ -161,8 +157,6 @@
       </table>
   </div>
 </div>
-
-
     <!-- Javascript for left side column -->
 
 <script>
@@ -179,11 +173,11 @@
         reader.readAsDataURL(file);
       }
     }
-  
+  </script>
 
-    //-- Javascript for right side column on register & view all users button 
+    <!-- Javascript for right side column -->
 
-    
+    <script>
     function showRegisterForm() {
       document.getElementById('registerForm').style.display = 'block';
       document.getElementById('allUsers').style.display = 'none';
@@ -197,9 +191,20 @@
 
     function submitRegisterForm() {
       // Implement your form submission logic here
-      alert('Register form submitted!');
+      let password1 = document.getElementById("password1").value;
+      let password2 = document.getElementById("password2").value;
+
+      if(password1!==pasword2){
+        document.getElementById("message").innerHTML = "Passwords do not match.";
+      }else {
+        
+      }
+      
     }
 
+    function showUsers(){
+     document.querySelector(".showUsers").style.display = "table";
+    }
   </script>
 
 
