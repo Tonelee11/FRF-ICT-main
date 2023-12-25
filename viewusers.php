@@ -1,35 +1,34 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
+    // require "header.php";
+    require "leftnav.php";
     require "connection.php";
 
-    if(isset($_POST['viewusers'])){
-        $sql = 'SELECT * FROM chiefIctOfficer';
+    // if(isset($_POST['viewusers'])){
+        $sql = 'SELECT * FROM ChiefIctOfficer';
         $query=mysqli_query($conn,$sql);
-        
         if($query){
-            while($row=mysqli_fetcha_ssoc($query)){
-                echo "<script>
-            document.getElementById('viewusers').innerHTML='
-            <div class='showUsers'>
-            <table border='2' align=center >
-              <tr>
-                <th colspan='4'><h2>All Users Information : </h2></th>
-              </tr>
+            echo "<table border='2' align=center >
                 <tr>
-                <th>Username</th>
-                <th>user type</th>
-                <th>chechno</th>
-              </tr>
-              <tr id='data'>
-                <td>".$row["username"]."</td>
-                <td>".strtoupper($row["usertype"])."</td>
-                <td>".$row["checkno"]."</td>
-              </tr>
-          </div>
-      
-            '
-            <script/>";
+                    <th colspan='4'><h2>All Users Information : </h2></th>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <th>user type</th>
+                    <th>chechno</th>
+                </tr>";
+            while($row=mysqli_fetch_array($query)){
+                echo "<tr id='data'>
+                    <td>".$row["CUname"]."</td>
+                    <td>".//strtoupper($row["usertype"]).
+                    "</td>
+                    <td>".$row["CCheckno"]."</td>
+                </tr>";
             }
-          
+            echo "</table>";
         }
-    }
+    // }
 ?>

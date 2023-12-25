@@ -16,3 +16,46 @@ function validateForm() {
     }
 }
 
+
+
+function updateProfilePicture(event) {
+    const fileInput = event.target;
+    const profileImage = document.getElementById('profileImage');
+
+    const file = fileInput.files[0];
+    if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        profileImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    }
+}
+
+
+//  Javascript for right side column 
+
+
+
+function showAllUsers() {
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('allUsers').style.display = 'block';
+}
+
+function submitRegisterForm() {
+    // Implement your form submission logic here
+    let password1 = document.getElementById("password1").value;
+    let password2 = document.getElementById("password2").value;
+
+    if(password1!==pasword2){
+    document.getElementById("message").innerHTML = "Passwords do not match.";
+    }else {
+    
+    }
+    
+}
+
+// function showUsers(){
+//  document.querySelector(".showUsers").style.display = "table";
+// }
+
