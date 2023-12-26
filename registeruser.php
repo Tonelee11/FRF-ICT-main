@@ -28,13 +28,10 @@
     </div>
 </div>
 
-
-
-<script>
+<script> 
     function showRegisterForm() {
-    document.getElementById('allUsers').style.display = 'block'
-    document.getElementById('allUsers').style.display = 'none';
-}
-
-
+        // event.preventDefault()
+        document.getElementById('registerForm').style.display = 'block'
+        document.getElementById('allUsers').style.display = 'none';
+    }
 </script>

@@ -1,12 +1,13 @@
 <?php
   require "header.php";
-  //require "connection.php";
+  require "connection.php";
+  // require "js/functions.js";
   session_start();
 
   if(isset($_POST['upload'])){
     $filename=$_FILES['upload']['name'];
     $tempname=$_FILES['upload']['name'];
-    $folder="/images/".$filename;
+    $folder="images/".$filename;
     
     $adminUsername = $_SESSION['admin_user'];
     // $filename = 'new_image.jpg';
@@ -35,7 +36,7 @@
   <form action="" method="post">
   <div class="profile" onclick="document.getElementById('fileInput').click()">
   
-      <img id="profileImage" src="image/admin.png" alt="Profile Picture">
+      <img id="profileImage" src="images/admin.png" alt="Profile Picture">
 
     </div>
     <h1>hi <?php   echo $_SESSION['admin_user'];?></h1>

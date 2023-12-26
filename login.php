@@ -9,10 +9,10 @@ if (isset($_POST['loginbtn'])) {
     $password = trim($_POST['password']);
 
     if ($username !== "" && $password !== "") {
-        $sql = "SELECT * FROM Admin WHERE Auname='$username' AND Apswd=CRC32('$password')";
+        $sql = "SELECT * FROM Admin WHERE Auname = '$username' AND Apswd = $password";
         $stmt = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($stmt)==1) {
+        if ($stmt) {
             // mysqli_stmt_bind_param($stmt, "ss", $username, $password);
             // mysqli_stmt_execute($stmt);
             // $result = mysqli_stmt_get_result($stmt);
@@ -23,8 +23,10 @@ if (isset($_POST['loginbtn'])) {
                 $_SESSION['admin_user'] = $username;
                 header("location:admin.php");
             // } else {
-            //     $message = urlencode('<script>alert("username or password is incorrect")</script>');
-            //     header("location:index.php?msg={$message}");
+            //     $message = "<script>
+            //     var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
+            //     // header("location:index.php?msg={$message}");
+            //     echo $message;
             // }
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);

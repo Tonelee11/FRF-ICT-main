@@ -42,6 +42,11 @@ function showAllUsers() {
     document.getElementById('allUsers').style.display = 'block';
 }
 
+function showRegisterForm() {
+    document.getElementById('registerForm').style.display = 'block'
+    document.getElementById('allUsers').style.display = 'none';
+}
+
 function submitRegisterForm() {
     // Implement your form submission logic here
     let password1 = document.getElementById("password1").value;

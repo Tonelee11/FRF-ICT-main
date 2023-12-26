@@ -13,7 +13,7 @@
         if($query){
             echo "<table border='2' align=center >
                 <tr>
-                    <th colspan='4'><h2>All Users Information : </h2></th>
+                    <th colspan='4'><h2><center>All Users Information : </center></h2></th>
                 </tr>
                 <tr>
                     <th>Username</th>
