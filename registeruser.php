@@ -29,9 +29,9 @@
 </div>
 
 <script> 
-    function showRegisterForm() {
-        // event.preventDefault()
-        document.getElementById('registerForm').style.display = 'block'
-        document.getElementById('allUsers').style.display = 'none';
-    }
+    // function showRegisterForm() {
+    //     // event.preventDefault()
+    //     document.getElementById('registerForm').style.display = 'block'
+    //     document.getElementById('allUsers').style.display = 'none';
+    // }
 </script>
