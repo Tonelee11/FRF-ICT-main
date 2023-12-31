@@ -5,7 +5,7 @@
 <!-- LOGIN FORM -->
 
 <center>
-<form method="post" action="login.php">
+  <form method="post"  action="login.php"> 
     <div class="heading">
       <h3>Login to your account</h3>
     </div>
