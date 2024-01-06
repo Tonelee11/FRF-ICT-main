@@ -1,9 +1,11 @@
 <?php
   require "header.php";
   require "connection.php";
-  // require "js/functions.js";
+  
   session_start();
-
+  if(!isset($_SESSION['admin_user'])){
+    header("location:index.php");
+  }
   if(isset($_POST['upload'])){
     $filename=$_FILES['upload']['name'];
     $tempname=$_FILES['upload']['name'];
