@@ -10,59 +10,26 @@ if (isset($_POST['loginbtn'])) {
     $password = trim($_POST['password']);
 
     if ($username !== "" && $password !== "") {
-        $admin = "SELECT * FROM Admin WHERE Auname = '$username' AND Apswd = '$password'";
-        $stmt = mysqli_query($conn, $admin);
-
-        $ChiefIctOfficer=mysqli_query($conn,"SELECT * FROM ChiefIctOfficer WHERE Cuname = '$username' AND Cpswd = '$password'");
-
-        $ICTStaff=mysqli_query($conn,"SELECT * FROM ICTStaff WHERE Suname = '$username' AND Spwd = '$password'");
+        $sql = "SELECT * FROM Admin WHERE Auname = '$username' AND Apswd = $password";
+        $stmt = mysqli_query($conn, $sql);
 
         if ($stmt) {
-            $rowCount = mysqli_num_rows($stmt);
-            if ($rowCount == 1) {
+            // mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+            // mysqli_stmt_execute($stmt);
+            // $result = mysqli_stmt_get_result($stmt);
+            // $rowCount = mysqli_num_rows($result);
+
+
+            // if ($rowCount == 1) {
                 $_SESSION['admin_user'] = $username;
                 header("location:admin.php");
-               
-            } else {
-                $message = "<script>
-                var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
-                // header("location:index.php?msg={$message}");
-                echo $message;
-                
-            }
-        } 
-        
-        if($ChiefIctOfficer){
-            //chief ict officer page
-            $rowCount = mysqli_num_rows($ChiefIctOfficer);
-
-            if ($rowCount == 1) {
-                $_SESSION['chief'] = $username;
-                header("location:chiefdashboard.php");
-                // var_dump($ChiefIctOfficer);
-                // die();
-            } else {
-                $message = "<script>
-                var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
-                header("location:index.php?msg={$message}");
-                echo $message;
-            }
-           
-        }
-        if($ICTStaff){
-            //chief ict staff page
-            $rowCount = mysqli_num_rows($ICTStaff);
-            if ($rowCount == 1) {
-                $_SESSION['staff'] = $username;
-                header("location:staffdashboard.php");
-            } else {
-                $message = "<script>
-                var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
-                header("location:index.php?msg={$message}");
-                echo $message;
-            }
-           
-        }else {
+            // } else {
+            //     $message = "<script>
+            //     var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
+            //     // header("location:index.php?msg={$message}");
+            //     echo $message;
+            // }
+        } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     } else {
