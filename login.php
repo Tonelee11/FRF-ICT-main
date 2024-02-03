@@ -9,16 +9,13 @@ if (isset($_POST['loginbtn'])) {
     $password = trim($_POST['password']);
 
     if ($username !== "" && $password !== "") {
-        $sql = "SELECT * FROM Admin WHERE Auname = '$username' AND Apswd = $password";
+        $sql = "SELECT * FROM Admin WHERE Auname = '$username' AND Apswd = CRC32($password)";
         $stmt = mysqli_query($conn, $sql);
-        $ChiefIctOfficer=mysqli_query($conn,"SELECT * FROM ChiefIctOfficer WHERE Cuname = '$username' AND Cpswd = '$password'");
+        $ChiefIctOfficer=mysqli_query($conn,"SELECT * FROM ChiefIctOfficer WHERE Cuname = '$username' AND Cpswd = CRC32('$password')");
 
-        $ICTStaff=mysqli_query($conn,"SELECT * FROM ICTStaff WHERE Suname = '$username' AND Spwd = '$password'");
+        $ICTStaff=mysqli_query($conn,"SELECT * FROM ICTStaff WHERE Suname = '$username' AND Spwd = CRC32('$password')");
 
         if ($stmt) {
-            // mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-            // mysqli_stmt_execute($stmt);
-            // $result = mysqli_stmt_get_result($stmt);
             $rowCount = mysqli_num_rows($stmt);
 
 
@@ -48,7 +45,7 @@ if (isset($_POST['loginbtn'])) {
         } else {
             $message = "<script>
             var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
-            header("location:index.php?msg={$message}");
+            // header("location:index.php?msg={$message}");
             echo $message;
         }
     
@@ -67,7 +64,7 @@ if (isset($_POST['loginbtn'])) {
         } else {
             $message = "<script>
             var error = document.getElementById('incorrect').innerHTML='incorrect password'</script>";
-            header("location:index.php?msg={$message}");
+            // header("location:index.php?msg={$message}");
             echo $message;
         }
         
