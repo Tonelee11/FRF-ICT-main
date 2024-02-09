@@ -64,3 +64,42 @@ function submitRegisterForm() {
 //  document.querySelector(".showUsers").style.display = "table";
 // }
 
+const registeredItems = ['Item 1', 'Item 2', 'Item 3'];
+const boughtItems = ['Bought Item 1', 'Bought Item 2', 'Bought Item 3'];
+
+
+
+// Initial load: Show registered items
+showItems('registered');
+
+function showItems(type) {
+  const itemsContainer = document.getElementById('itemsContainer');
+  const viewRegisteredItemsLink = document.getElementById('viewRegisteredItemsLink');
+  const viewBoughtItemsLink = document.getElementById('viewBoughtItemsLink');
+
+  // Clear previous items
+  itemsContainer.innerHTML = '';
+
+  // Update active link style
+  if (type === 'registered') {
+    viewRegisteredItemsLink.style.fontWeight = 'bold';
+    viewBoughtItemsLink.style.fontWeight = 'normal';
+    displayItems(registeredItems);
+  } else {
+    viewBoughtItemsLink.style.fontWeight = 'bold';
+    viewRegisteredItemsLink.style.fontWeight = 'normal';
+    displayItems(boughtItems);
+  }
+}
+
+function displayItems(items) {
+  const itemsContainer = document.getElementById('itemsContainer');
+
+  // Display each item
+  items.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.classList.add('item');
+    itemElement.textContent = item;
+    itemsContainer.appendChild(itemElement);
+  });
+}

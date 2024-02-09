@@ -1,5 +1,5 @@
 <?php
-    require "leftnav.php";
+    require "header.php";
 ?>
 <body>
     <h1>welcome staff</h1>
