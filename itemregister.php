@@ -16,15 +16,19 @@
         $iccondition = $_GET['iccondition'];
         $Iregdate = $_GET['Iregdate'];
 
-        $sql = "INSERT INTO items (IRegion, IDepartment, IType, Ibrand,Imodel, IserialNo, Imemory, ImsOffice, antivirus, IotherSoftwares, IAquisitiondate, IAquisitiontype, ICCondition, IRegisterDate)
-                VALUES ('$region', '$department', '$type', '$brand',$model, '$serialNo', '$memory', '$Imsoffice', '$antivirus', '$othersoftwares', '$IAdate', '$IAtype', '$iccondition', '$Iregdate')";
+        $stmt = $conn->prepare("INSERT INTO items (IRegion, IDepartment, IType, Ibrand, Imodel, IserialNo, Imemory, ImsOffice, IAntivirus, IotherSoftware, IAquistionDate, IAquistiontype, ICCondition, IRegisterDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+        if ($stmt) {
+            $stmt->bind_param("ssssssssssssss", $region, $department, $type, $brand, $model, $serialNo, $memory, $Imsoffice, $antivirus, $othersoftwares, $IAdate, $IAtype, $iccondition, $Iregdate);
+
+            if ($stmt->execute()) {
+                echo "Data inserted successfully";
+            } else {
+                echo "Error: " . $stmt->error; // Print the error message for debugging
+            }
+
+            $stmt->close();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error preparing statement: " . $conn->error; // Print the error message for debugging
         }
     }
-
-    $conn->close();
-?>

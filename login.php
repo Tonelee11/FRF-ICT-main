@@ -1,71 +1,63 @@
 <?php
     require "connection.php";
 
-
     session_start();
+
+    function getAdminByUsernameAndPassword($conn, $username, $password) {
+        $sql = "SELECT * FROM Admin WHERE Auname = ? AND Apswd = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    function getChiefIctOfficerByUsernameAndPassword($conn, $username, $password) {
+        $password = crc32($password);
+        $sql = "SELECT * FROM ChiefIctOfficer WHERE Cuname = ? AND Cpswd = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    function getIctStaffByUsernameAndPassword($conn, $username, $password) {
+        $password = crc32($password);
+        $sql = "SELECT * FROM ICTStaff WHERE Suname = ? AND Spwd = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
 
     if (isset($_POST['loginbtn'])) {
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
 
         if ($username !== "" && $password !== "") {
-            $sql = "SELECT * FROM Admin WHERE Auname = '$username' AND Apswd = '$password'";
-            $stmt = mysqli_query($conn, $sql);
-            $ChiefIctOfficer=mysqli_query($conn,"SELECT * FROM ChiefIctOfficer WHERE Cuname = '$username' AND Cpswd = CRC32('$password')");
+            $admin = getAdminByUsernameAndPassword($conn, $username, $password);
+            $chiefIctOfficer = getChiefIctOfficerByUsernameAndPassword($conn, $username, $password);
+            $ictStaff = getIctStaffByUsernameAndPassword($conn, $username, $password);
 
-            $ICTStaff=mysqli_query($conn,"SELECT * FROM ICTStaff WHERE Suname = '$username' AND Spwd = CRC32('$password')");
-
-            if ($stmt) {
-                $rowCount = mysqli_num_rows($stmt);
-
-
-                if ($rowCount == 1) {
-                    $_SESSION['admin_user'] = $username;
-                    header("location:admin.php");
-                } else {
-                    $message = "<script>alert('incorrect username or password')</script>";
-                    // header("location:index.php?msg={$message}");
-                    echo $message;
-                    header("location:index.php");
-                }
+            if ($admin->num_rows == 1) {
+                $_SESSION['admin_user'] = $username;
+                header("location:admin.php");
+                exit;
+            } elseif ($chiefIctOfficer->num_rows == 1) {
+                // Chief ICT Officer page
+                header("location:chiefdashboard.php");
+                exit;
+            } elseif ($ictStaff->num_rows == 1) {
+                // ICT Staff page
+                header("location:staffdashboard.php");
+                exit;
             } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                $message = "<script>alert('Incorrect username or password')</script>";
+                header("location:index.php?msg={$message}");
+                exit;
             }
         } else {
-            $message = urlencode('<script>alert("please fill both fields")</script>');
+            $message = urlencode('<script>alert("Please fill both fields")</script>');
             header("location:index.php?msg={$message}");
-        }
-        
-        if($ICTStaff){
-            //chief ict staff page
-            $rowCount = mysqli_num_rows($ICTStaff);
-            if ($rowCount == 1) {
-                $_SESSION['staff'] = $username;
-                header("location:staffdashboard.php");
-            } else {
-                $message = "<script>alert('incorrect username or password')</script>";
-                echo $message;
-                header("location:index.php");
-            }
-        
-        }else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-        
-        if($ChiefIctOfficer){
-            //chief ict officer page
-            $rowCount = mysqli_num_rows($ChiefIctOfficer);
-
-            if ($rowCount == 1) {
-                $_SESSION['chief'] = $username;
-                header("location:chiefdashboard.php");
-                
-            } else {
-                $message = "<script>alert('incorrect username or password')</script>";
-                echo $message;
-                header("location:index.php");
-            }
-            
+            exit;
         }
     }
-?>

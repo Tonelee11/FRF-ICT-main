@@ -10,7 +10,7 @@
         <h4>Register items</h4>
         <input type="text" placeholder="region" name="region">
         <input type="text" placeholder="Department" name="department">
-        <input type="text" placeholder="type" name="type">
+        <input type="text" placeholder="staff check number" name="type">
         <input type="text" placeholder="brand" name="brand">
         <input type="text" placeholder="model" name="Imodel">
         <input type="text" placeholder="serial number" name="serialNo">
