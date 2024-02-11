@@ -53,6 +53,7 @@
       <a href="registeruser.php" class="dashboard-btn" onclick="showRegisterForm()">Register User</a>
       <a href="viewusers.php" class="dashboard-btn" onclick="showAllUsers()">View All Users</a>
       <a href="logout.php" class="dashboard-btn">Logout</a>
+      <a href="ict_staff.php" class="dashboard-btn">ICT STAFF</a>
       
     </div>
   </div>
