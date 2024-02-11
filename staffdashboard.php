@@ -1,5 +1,6 @@
 <?php
+    session_start();
     require "header.php";
-    // require "chiefheader.php";
-    echo $_SESSION['staff'];
-?>
+    require "navheader.php";
+    
+

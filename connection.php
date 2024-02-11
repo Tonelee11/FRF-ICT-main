@@ -7,5 +7,3 @@
     if(!$conn){
         echo "Error:".mysqli_error($conn);
     }
-
-?>

@@ -39,17 +39,23 @@
             $ictStaff = getIctStaffByUsernameAndPassword($conn, $username, $password);
 
             if ($admin->num_rows == 1) {
-                $_SESSION['admin_user'] = $username;
+                $row=$admin->fetch_assoc();
+                $_SESSION['ACheckno']=$row['ACheckno'];
+                $_SESSION['username'] = $username;
                 header("location:admin.php");
                 exit;
             } elseif ($chiefIctOfficer->num_rows == 1) {
                 // Chief ICT Officer page
-                $_SESSION['chief'] = $username;
+                $row=$chiefIctOfficer->fetch_assoc();
+                $_SESSION['CCheckno']=$row['CCheckno'];
+                $_SESSION['username'] = $username;
                 header("location:chiefdashboard.php");
                 exit;
             } elseif ($ictStaff->num_rows == 1) {
                 // ICT Staff page
-                $_SESSION['staff'] = $username;
+                $row=$ictStaff->fetch_assoc();
+                $_SESSION['Scheckno']=$row['Scheckno'];
+                $_SESSION['username'] = $username;
                 header("location:staffdashboard.php");
                 exit;
             } else {

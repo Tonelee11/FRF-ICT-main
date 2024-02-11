@@ -36,11 +36,11 @@
 
 <div class="left-column">
   <form action="" method="post">
-  <div class="profile" onclick="document.getElementById('fileInput').click()">
-  
-      <img id="profileImage" src="images/admin.png" alt="Profile Picture">
+    <div class="profile" onclick="document.getElementById('fileInput').click()">
+    
+        <img id="profileImage" src="images/admin.png" alt="Profile Picture">
 
-    </div>
+      </div>
     <h1>hi <?php   echo $_SESSION['admin_user'];?></h1>
     <!-- Hidden file input for profile picture upload -->
     <input type="file" id="fileInput" nam="upload" class="upload-input" onchange="updateProfilePicture(event)" style="display: none"> 

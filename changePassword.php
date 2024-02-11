@@ -1,19 +1,33 @@
 <?php
+    
     require "header.php";
-   
+    require "navheader.php";
 ?>
 <center>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-<h2>Change Password</h2>
-<label for="currentPassword">Current Password:</label>
-<input type="password" id="currentPassword" placeholder="Current Password" name="currentPassword" required><span class="error"><?php echo $currentPasswordErr;?></span><br>
-<label for="newPassword">New Password:</label>
-<input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required><span class="error"><?php echo $newPasswordErr;?></span><br>
-<label for="confirmPassword">Confirm Password:</label>
-<input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter New Password" required><span class="error"><?php echo $confirmPasswordErr;?></span><br>
-<br>
-<button type="submit"  name="change_password">Change Password</button>
-</form>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+     <h2>Change Password</h2>
+    
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" placeholder="Current Password" name="currentPassword" required>
+        <span class="error">
+            <?php echo $currentPasswordErr;?>
+        </span><br>
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+        <span class="error">
+            <?php echo $newPasswordErr;?>
+        </span><br>
+        
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter New Password" required>
+        <span class="error">
+            <?php echo $confirmPasswordErr;?>
+        </span><br>
+        
+        <br>
+        <button type="submit"  name="change_password">Change Password</button>
+    </form>
 </center>
 <?php
 

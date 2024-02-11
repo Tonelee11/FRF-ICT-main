@@ -1,6 +1,6 @@
 <?php
     require "header.php";
-    require "chiefheader.php"
+    require "navheader.php"
 ?>
 
 
