@@ -16,17 +16,17 @@
 
     $query = "UPDATE Admin SET image = :filename WHERE Auname=:adminUsername";
 
-    // $sql=mysqli_query($conn,$query);
-    // if($sql){
-    //   echo "<script>alert('image changed')</script>";
-    // }
+    $sql=mysqli_query($conn,$query);
+    if($sql){
+      echo "<script>alert('image changed')</script>";
+    }
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':filename', $filename);
     $stmt->bindParam(':adminUsername', $adminUsername);
     $stmt->execute();
 
-    }
+  }
 
 ?>
 

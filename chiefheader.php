@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <body>
   <header>
     <h4><?=$_SESSION['chief']?></h4>

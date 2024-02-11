@@ -16,6 +16,9 @@
 
         <?php
         require "connection.php";
+        if(!isset($_SESSION['chief'])){
+            header('location:index.php');
+        }
 
         $sql = $conn->query("select * from items");
 

@@ -1,14 +1,13 @@
 <?php
-// Start session
-session_start();
+    // Start session
+    session_start();
 
-// Clear all session data
-session_unset();
+    // Clear all session data
+    session_unset();
 
-// Destroy the session
-session_destroy();
+    // Destroy the session
+    session_destroy();
 
-// Redirect to index.php
-header("location:index.php");
-exit();
-?>
+    // Redirect to index.php
+    header("location:index.php");
+    exit();

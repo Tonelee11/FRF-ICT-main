@@ -44,10 +44,12 @@
                 exit;
             } elseif ($chiefIctOfficer->num_rows == 1) {
                 // Chief ICT Officer page
+                $_SESSION['chief'] = $username;
                 header("location:chiefdashboard.php");
                 exit;
             } elseif ($ictStaff->num_rows == 1) {
                 // ICT Staff page
+                $_SESSION['staff'] = $username;
                 header("location:staffdashboard.php");
                 exit;
             } else {
