@@ -1,5 +1,5 @@
 <?php
     require "header.php";
-    require "chiefheader.php";
-
+    // require "chiefheader.php";
+    echo $_SESSION['staff'];
 ?>
