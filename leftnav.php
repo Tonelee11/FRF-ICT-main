@@ -3,7 +3,7 @@
   require "connection.php";
   
   session_start();
-  if(!isset($_SESSION['admin_user'])){
+  if(!isset($_SESSION['username'])){
     header("location:index.php");
   }
   if(isset($_POST['upload'])){
@@ -41,7 +41,7 @@
         <img id="profileImage" src="images/admin.png" alt="Profile Picture">
 
       </div>
-    <h1>hi <?php   echo $_SESSION['admin_user'];?></h1>
+    <h1>hi <?php   echo $_SESSION['username'];?></h1>
     <!-- Hidden file input for profile picture upload -->
     <input type="file" id="fileInput" nam="upload" class="upload-input" onchange="updateProfilePicture(event)" style="display: none"> 
     
@@ -53,7 +53,7 @@
       <a href="registeruser.php" class="dashboard-btn" onclick="showRegisterForm()">Register User</a>
       <a href="viewusers.php" class="dashboard-btn" onclick="showAllUsers()">View All Users</a>
       <a href="logout.php" class="dashboard-btn">Logout</a>
-      <a href="ict_staff.php" class="dashboard-btn">ICT STAFF</a>
+      <!-- <a href="ict_staff.php" class="dashboard-btn">ICT STAFF</a> -->
       
     </div>
   </div>

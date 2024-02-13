@@ -16,7 +16,7 @@
 
         <?php
         require "connection.php";
-        if(!isset($_SESSION['chief'])){
+        if(!isset($_SESSION['username'])){
             header('location:index.php');
         }
 

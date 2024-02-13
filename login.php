@@ -4,6 +4,7 @@
     session_start();
 
     function getAdminByUsernameAndPassword($conn, $username, $password) {
+        $password = crc32($password);
         $sql = "SELECT * FROM Admin WHERE Auname = ? AND Apswd = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $username, $password);
