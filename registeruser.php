@@ -1,6 +1,5 @@
 <?php
-    require "header.php";
-    // require "navheader.php";
+    require "leftnav.php";
     require "connection.php";
 
  ?>
