@@ -41,7 +41,10 @@
         <img id="profileImage" src="images/admin.png" alt="Profile Picture">
 
       </div>
-    <h1>hi <?php   echo $_SESSION['username'];?></h1>
+      <center>
+      <h1>hi <?php   echo $_SESSION['username'];?></h1>
+      </center>
+    
     <!-- Hidden file input for profile picture upload -->
     <input type="file" id="fileInput" nam="upload" class="upload-input" onchange="updateProfilePicture(event)" style="display: none"> 
     
