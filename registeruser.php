@@ -1,37 +1,18 @@
 <?php
-    // require "header.php";
-    require "leftnav.php";
+    require "header.php";
+    // require "navheader.php";
+    require "connection.php";
 
-?>
+ ?>
 
-<div class="right-column">
-    <div class="register-form" id="registerForm">
-        <div> <h3>Register new user</h3></div>
-        <form action="register.php" method="post">
-            <div class="form-field">
-                <label for="chief officer ">chef officer username:</label>
-                <input type="text" id="fullName" name="Cuname" placeholder="Full Name" required>
-            </div>
-            
-            <div class="form-field">
-                <label for="password">Password:</label>
-                <input type="password" id="password1" name="Cpswd" placeholder="password" required>
-            </div>
-            <span id="message"></span>
-            <div class="form-field">
-                <label for="Ccheckno">Ccheckno:</label>
-                <input type="text" id="Ccheckno" name="Ccheckno" placeholder="checkno" required>
-            </div>
-            <button type="submit" id="submit" onclick="submitRegisterForm()" name="register">register</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<script> 
-    // function showRegisterForm() {
-    //     // event.preventDefault()
-    //     document.getElementById('registerForm').style.display = 'block'
-    //     document.getElementById('allUsers').style.display = 'none';
-    // }
-</script>
+<center>
+    <!-- <h1>Register items</h1> -->
+    <Form method="get" action="itemregister.php">
+        <h4>User Registration</h4>
+        <input type="text" placeholder="username" name="username">
+        <input type="text" placeholder="password" name="password">
+        <input type="text" placeholder="staff check number" name="type">
+      
+        <input type="submit" value="User" name="User">
+     
+</center>

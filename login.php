@@ -70,3 +70,29 @@
             exit;
         }
     }
+    // REGISTRATION OF NEW ICT STAFF MEMBERS FROM ADMIN 
+    require "connection.php";
+    if (isset($_GET['User'])) {
+        $username = $_GET['username'];    
+        $password = $_GET['password'];
+        $CheckNo = $_GET['CheckNo'];
+    
+
+        $stmt = $conn->prepare("INSERT INTO User (username, password, CheckNo) VALUES (?, ?, ?)");
+
+        if ($stmt) {
+            $stmt->bind_param("ssssssssssssss", $username, $password, $CheckNo);
+
+            if ($stmt->execute()) {
+                echo "Data inserted successfully";
+            } else {
+                echo "Error: " . $stmt->error; // Print the error message for debugging
+            }
+
+            $stmt->close();
+        } else {
+            echo "Error preparing statement: " . $conn->error; // Print the error message for debugging
+        }
+    }
+    
+    ?>
